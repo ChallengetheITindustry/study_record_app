@@ -1,0 +1,9 @@
+<hr>
+<%= form_with model: @post, local: true do |form| %>
+<div>
+<p>日付：<%= form.date_select :date_select, use_month_numbers: true %></p>
+<p>タイトル：<%= form.text_field :title, placeholder: "タイトルを入力してください" %></p>
+<p>内容：<%= form.text_field :content, placeholder: '学習内容を入力してください' %></p>
+<%= form.submit "送信" %>
+</div>
+<% end %>
