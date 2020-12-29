@@ -6,7 +6,7 @@ class PostsController < ApplicationController
 
   def create
     post = Post.create!(post_params)
-    redirect_to posts_path
+    redirect_to posts_path, notice: "投稿しました"
   end
 
   def index
@@ -15,7 +15,7 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy!
-    redirect_to post
+    redirect_to posts_path, alert: "削除しました"
   end
 
   def show
@@ -27,7 +27,7 @@ class PostsController < ApplicationController
 
   def update
     @post.update!(post_params)
-    redirect_to post
+    redirect_to posts_path, notice: "更新しました"
   end
 
   private
