@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-
+  before_action :set_post, only: %i[destroy edit update]
   def new
     @post = Post.new
   end
@@ -14,8 +14,7 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    post = Post.find(params[:id])
-    post.destroy!
+    @post.destroy!
     redirect_to post
   end
 
@@ -24,12 +23,10 @@ class PostsController < ApplicationController
   end
 
   def edit
-    @posts = Post.find(params[:id])
   end
 
   def update
-    post = Post.find(params[:id])
-    post.update!(post_params)
+    @post.update!(post_params)
     redirect_to post
   end
 
@@ -37,6 +34,10 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:date, :title, :content)
+  end
+
+  def set_post
+    @post = Post.find(params[:id])
   end
 
 end
