@@ -1,0 +1,9 @@
+<h1>詳細</h1>
+<hr>
+    <div>
+    <% @posts.each do |post| %>
+        <p>日付：<%= post.date %></p>
+        <p>タイトル：<%= post.title %></p>
+        <p>内容：<%= post.content %></p>
+    <% end %>
+    </div>

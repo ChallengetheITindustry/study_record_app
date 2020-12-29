@@ -7,10 +7,10 @@ class PostsController < ApplicationController
   def create
     post = Post.create!(post_params)
     redirect_to posts_path
+  end
 
-    def index
-      @posts = Post.order(id: :asc)
-    end
+  def index
+    @posts = Post.order(id: :asc)
   end
 
   def destroy
@@ -19,7 +19,15 @@ class PostsController < ApplicationController
     redirect_to post
   end
 
+  def show
+    @posts = Post.where(id: params[:id])
+  end
+
   def edit
+    @posts = Post.find(params[:id])
+  end
+
+  def update
     post = Post.find(params[:id])
     post.update!(post_params)
     redirect_to post
