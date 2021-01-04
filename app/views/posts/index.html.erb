@@ -1,0 +1,15 @@
+<%= javascript_pack_tag 'hello_vue' %>
+<%= stylesheet_pack_tag 'hello_vue' %>
+
+<h1>投稿一覧</h1>
+<p>日々の勉強内容を記録していきます。適宜本アプリの修正・更新を行う。</p>
+<hr>
+    <% @posts.each do |post| %>
+    <div>
+        <p>日付：<%= post.date %></p>
+        <p>タイトル：<%= post.title %></p>
+          <%= link_to "詳細", post %>
+          <%= link_to "編集", edit_post_path(post.id) %>
+          <%= link_to "削除", post, method: :delete, data: { confirm: "削除しますか?" } %>
+    </div>
+    <% end %>
